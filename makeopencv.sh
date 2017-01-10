@@ -1,22 +1,8 @@
 #!/bin/bash
 
-CV2_VERSION=3.1.0
+CV2_VERSION=${1:-3.1.0}
 
-apt update && \
-apt install -y \
-  build-essential \
-  cmake \
-  wget \
-  libtbb2 \
-  libtbb-dev \
-  libjpeg-dev \
-  libpng-dev \
-  libjasper-dev \
-  libtiff-dev
-
-pip install numpy
-
-wget -O cv2.tar.gz https://github.com/opencv/opencv/archive/${CV2_VERSION}.tar.gz
+wget -q -O cv2.tar.gz https://github.com/opencv/opencv/archive/${CV2_VERSION}.tar.gz
 tar -xvzf cv2.tar.gz
 rm cv2.tar.gz
 

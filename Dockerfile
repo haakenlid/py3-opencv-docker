@@ -1,7 +1,8 @@
 FROM python:3.5
 MAINTAINER haakenlid
-RUN apt update && \
-      apt install -y \
+WORKDIR /
+RUN   apt-get update && \
+      apt-get install -y \
       build-essential \
       cmake \
       wget \
@@ -13,7 +14,10 @@ RUN apt update && \
       libtiff-dev
 
 RUN   pip install numpy
-COPY ./makeopencv.sh /
-WORKDIR /
-RUN /makeopencv.sh
-
+COPY  makeopencv.sh /
+RUN   /makeopencv.sh
+RUN   pip install jupyter
+EXPOSE 8888
+VOLUME /var/notebooks
+COPY   run_jupyter.sh /
+CMD    /run_jupyter.sh
