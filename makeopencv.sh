@@ -4,7 +4,6 @@ CV2_VERSION=${1:-3.1.0}
 
 wget -q -O cv2.tar.gz https://github.com/opencv/opencv/archive/${CV2_VERSION}.tar.gz
 tar -xvzf cv2.tar.gz
-rm cv2.tar.gz
 
 SOURCE_DIR="$PWD/opencv-$CV2_VERSION"
 mkdir -p "$SOURCE_DIR/build"
@@ -21,18 +20,18 @@ cmake \
   -D CMAKE_INSTALL_PREFIX=/usr/local\
   -D CMAKE_BUILD_TYPE=RELEASE\
   -D ENABLE_PRECOMPILED_HEADERS=OFF\
-  -D BUILD_SHARED_LIBS=OFF\
+  -D BUILD_SHARED_LIBS=ON\
   -D BUILD_opencv_core=ON              `# Core functionality` \
+  -D BUILD_opencv_ml=ON                `# Machine Learning` \
   -D BUILD_opencv_imgproc=ON           `# Image processing` \
   -D BUILD_opencv_imgcodecs=ON         `# Image file reading and writing` \
+  -D BUILD_opencv_features2d=ON        `# 2D Features Framework` \
+  -D BUILD_opencv_flann=ON             `# Clustering and Search in Multi-Dimensional Spaces` \
+  -D BUILD_opencv_objdetect=ON         `# Object Detection` \
   -D BUILD_opencv_videoio=OFF          `# Video I/O` \
   -D BUILD_opencv_highgui=OFF          `# High-level GUI` \
   -D BUILD_opencv_video=OFF            `# Video Analysis` \
   -D BUILD_opencv_calib3d=OFF          `# Camera Calibration and 3D Reconstruction` \
-  -D BUILD_opencv_features2d=ON        `# 2D Features Framework` \
-  -D BUILD_opencv_objdetect=ON         `# Object Detection` \
-  -D BUILD_opencv_ml=OFF               `# Machine Learning` \
-  -D BUILD_opencv_flann=OFF            `# Clustering and Search in Multi-Dimensional Spaces` \
   -D BUILD_opencv_photo=OFF            `# Computational Photography` \
   -D BUILD_opencv_stitching=OFF        `# Images stitching` \
   -D BUILD_opencv_cudaarithm=OFF       `# Operations on Matrices` \
@@ -55,4 +54,5 @@ cmake \
 
 make -j4
 make install
+rm cv2.tar.gz
 rm -r $SOURCE_DIR
