@@ -3,7 +3,7 @@
 CV2_VERSION=${1:-3.1.0}
 
 wget -q -O cv2.tar.gz https://github.com/opencv/opencv/archive/${CV2_VERSION}.tar.gz
-tar -xvzf cv2.tar.gz
+tar -xvzf cv2.tar.gz && rm cv2.tar.gz
 
 SOURCE_DIR="$PWD/opencv-$CV2_VERSION"
 mkdir -p "$SOURCE_DIR/build"
@@ -54,5 +54,5 @@ cmake \
 
 make -j4
 make install
-rm cv2.tar.gz
+
 rm -r $SOURCE_DIR
