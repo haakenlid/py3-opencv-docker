@@ -1,4 +1,4 @@
-FROM python:3.6
+FROM python:3-stretch
 MAINTAINER haakenlid
 WORKDIR /
 RUN   apt-get update && \
@@ -9,9 +9,8 @@ RUN   apt-get update && \
       libtbb-dev \
       libjpeg-dev \
       libpng-dev \
-      libjasper-dev \
       libtiff-dev
 
 RUN   pip install numpy
 COPY  makeopencv.sh ./
-RUN   ["./makeopencv.sh", "3.2.0"]
+RUN   ["./makeopencv.sh", "3.3.1"]
