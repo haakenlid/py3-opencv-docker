@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CV2_VERSION=${1:-3.1.0}
+CV2_VERSION=${1:-3.3.1}
 
 wget -q -O cv2.tar.gz https://github.com/opencv/opencv/archive/${CV2_VERSION}.tar.gz
 tar -xvzf cv2.tar.gz && rm cv2.tar.gz

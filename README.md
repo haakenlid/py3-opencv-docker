@@ -1,4 +1,4 @@
 # py3-opencv-docker
-Docker image for running opencv3 and python
+Docker image for running opencv and python
 
-Builds opencv 3.1 with python 3.6.1 bindings
+Builds opencv 3.3+ with python 3.6+ bindings
