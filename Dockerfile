@@ -9,8 +9,9 @@ RUN   apt-get update && \
       libtbb-dev \
       libjpeg-dev \
       libpng-dev \
-      libtiff-dev
+      libtiff-dev \
+&& rm -rf /var/lib/apt/lists/*
 
 RUN   pip install numpy
 COPY  makeopencv.sh ./
-RUN   ["./makeopencv.sh", "3.3.1"]
+RUN   ["./makeopencv.sh", "3.4.1"]
