@@ -10,8 +10,9 @@ RUN   apt-get update && \
       libjpeg-dev \
       libpng-dev \
       libtiff-dev \
+      pkg-config \
 && rm -rf /var/lib/apt/lists/*
 
 RUN   pip install numpy
 COPY  makeopencv.sh ./
-RUN   ["./makeopencv.sh", "3.4"]
+RUN   ["./makeopencv.sh", "3.3"]

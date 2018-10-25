@@ -5,6 +5,7 @@ set -e  # exit on error
 wget -q -O cv2.tar.gz https://github.com/opencv/opencv/archive/${CV2_VERSION}.tar.gz
 tar -xvzf cv2.tar.gz && rm cv2.tar.gz
 
+NUMPY_INCLUDE=$(python -c "import numpy;print(numpy.get_include())")
 SOURCE_DIR="$PWD/opencv-$CV2_VERSION"
 mkdir -p "$SOURCE_DIR/build"
 cd "$SOURCE_DIR/build"
@@ -17,6 +18,8 @@ cmake \
   -D BUILD_PERF_TESTS=OFF\
   -D BUILD_TESTS=OFF\
   -D PYTHON3_EXECUTABLE=$(which python3)\
+  -D PYTHON3_EXECUTABLE=$(which python3)\
+  -D PYTHON3_NUMPY_INCLUDE_DIRS=NUMPY_INCLUDE\
   -D CMAKE_INSTALL_PREFIX=/usr/local\
   -D CMAKE_BUILD_TYPE=RELEASE\
   -D ENABLE_PRECOMPILED_HEADERS=OFF\
