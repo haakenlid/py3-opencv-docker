@@ -15,4 +15,4 @@ RUN   apt-get update && \
 
 RUN   pip install numpy
 COPY  makeopencv.sh ./
-RUN   ["./makeopencv.sh", "3.3"]
+RUN   ["./makeopencv.sh", "3.3.1"]
