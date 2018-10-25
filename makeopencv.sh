@@ -59,3 +59,4 @@ make -j4
 make install
 
 rm -r $SOURCE_DIR
+python -c "from cv2 import CascadeClassifier"  # test
